@@ -1,0 +1,31 @@
+Project-Code: https://github.com/Nikhil-tr/AWSProject3
+
+1. Launch An RDS Instance
+  -> name: admin
+  -> password: admin123
+  -> initial db: proj3
+
+2. Update the endpoint(servername) on index.php
+
+3. Create 2 Security Groups 
+   -> 1 for instance to allow all http traffic, ssh from myip
+   -> 2 for RDS which allow MySQL/Aurora from EC2-Inst-SG
+
+4. Launch an EC2 instance install apache2 and mysql client 
+   -> sudo apt-get update -y
+   -> sudo apt-get install apache2 -y                                         #Webserver
+
+   -> sudo add-apt-repository -y ppa:ondrej/php                               #To install repositories
+   -> sudo add apt install php5.6 mysql-client php5.6-mysqli -y               #To communicate between mysql db
+
+   -> mysql -h ep -u admin -p
+   -> use proj3;
+   -> create table data (firstname varchar(25), email varchar(25));
+   -> show tables;
+   -> select * from data;
+
+5. Select Instance and create an image(AMI) and Launch-Template from the ami
+
+6. Use this launch-template and create the app using  Auto-Scaling Group for HA and Scalability
+
+7. Now you can use Load Balancer DNS to View the application
